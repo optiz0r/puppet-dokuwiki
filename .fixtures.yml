@@ -1,0 +1,8 @@
+---
+fixtures:
+    symlinks:
+        dokuwiki: "#{source_dir}"
+    repositories:
+        webapp_config: "https://github.com/optiz0r/puppet-webapp-config.git"
+        stdlib: "git://github.com/puppetlabs/puppetlabs-stdlib.git"
+

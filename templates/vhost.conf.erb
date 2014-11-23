@@ -1,0 +1,60 @@
+<VirtualHost *:80>
+ 
+     ServerName <%= @vhost %>
+     DocumentRoot <%= @install_dir %>/<%= @base_path %>
+ 
+     # Permit larger file uploads
+     php_value upload_max_filesize 20M
+     # Must be at least as large as upload_max_filesize, plus a bit
+     # for the form metadata
+     php_value post_max_size 24M
+ 
+     <Directory "<%= @install_dir %>/<%= @base_path %><%= @base_path_suffix %>">
+             AllowOverride None
+             Options +FollowSymLinks
+             Order Allow,Deny
+             Allow from All
+ 
+<%- if @auth_type == 'ldap' -%>
+             AuthType Basic
+             AuthName "LDAP Auth"
+             AuthBasicProvider "ldap"
+             AuthLDAPUrl "ldap://<%= @ldap_servers.join(" ") %>:389/<%= @ldap_usertree %>?<%= @ldap_user_account_attr %>?<%= @ldap_user_scope %>"
+             Require valid-user
+<%- end -%>
+ 
+             RewriteEngine on
+             RewriteBase /<%= @base_path %><%= @base_path_suffix %>
+             RewriteRule ^_media/(.*)              lib/exe/fetch.php?media=$1  [QSA,L]
+             RewriteRule ^_detail/(.*)             lib/exe/detail.php?media=$1  [QSA,L]
+             RewriteRule ^_export/([^/]+)/(.*)     doku.php?do=export_$1&id=$2  [QSA,L]
+             RewriteRule ^$                        doku.php  [L]
+             RewriteCond %{REQUEST_FILENAME}       !-f
+             RewriteCond %{REQUEST_FILENAME}       !-d
+             RewriteRule (.*)                      doku.php?id=$1  [QSA,L]
+             RewriteRule ^index.php$               doku.php
+     </Directory>
+ 
+     # Explicitly deny access to all code and configuration directories
+     <Directory "<%= @install_dir %>/<%= @base_path %><%= @base_path_suffix %>/inc">
+             Order Deny,Allow
+             Deny from all
+     </Directory>
+ 
+     <Directory "<%= @install_dir %>/<%= @base_path %><%= @base_path_suffix %>/inc/lang">
+             Order Deny,Allow
+             Deny from all
+     </Directory>
+ 
+     <Directory "<%= @install_dir %>/<%= @base_path %><%= @base_path_suffix %>/lib/_fla">
+             ## no access to the fla directory
+             Order allow,deny
+             Deny from all
+     </Directory>
+ 
+     <Directory /etc/dokuwiki>
+             Order Deny,Allow
+             Deny from all
+     </Directory>
+ 
+ </VirtualHost>

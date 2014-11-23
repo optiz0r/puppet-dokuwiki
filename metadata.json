@@ -1,0 +1,14 @@
+{
+  "name": "optiz0r-dokuwiki",
+  "version": "0.1.0",
+  "author": "Ben Roberts",
+  "summary": "Installs and configures dokuwiki",
+  "license": "MIT",
+  "source": "https://gitlab.sihnon.net/ben/puppet-dokuwiki.git",
+  "project_page": "https://gitlab.sihnon.net/ben/puppet-dokuwiki",
+  "issues_url": "https://gitlab.sihnon.net/ben/puppet-dokuwiki/issues",
+  "dependencies": [
+    {"name":"puppetlabs-stdlib","version_requirement":">= 1.0.0"}
+  ]
+}
+
