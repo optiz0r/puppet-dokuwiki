@@ -57,6 +57,18 @@ class dokuwiki::config (
             group   => 'root',
             mode    => '0444';
 
+        "${install_dir}/htdocs/${base_path}conf":
+            ensure  => directory,
+            owner   => $apache_user,
+            group   => $apache_group,
+            mode    => '0664';
+
+        "${install_dir}/htdocs/${base_path}lib/plugins":
+            ensure  => directory,
+            owner   => $apache_user,
+            group   => $apache_group,
+            mode    => '0664';
+
         $data_dir:
             ensure => directory,
             owner  => $apache_user,
