@@ -10,7 +10,7 @@ class dokuwiki::params {
             $package_name      = 'dokuwiki'
             $version           = '20140929a'
             $use_webapp_config = true
-            $apache_confdir    = '/etc/apache/vhosts.d'
+            $apache_confdir    = '/etc/apache2/vhosts.d'
             $apache_user       = 'apache'
             $apache_group      = 'apache'
         }
