@@ -8,6 +8,7 @@ class dokuwiki::install (
     $package_name      = $dokuwiki::package_name,
     $use_webapp_config = $dokuwiki::use_webapp_config,
     $vhost             = $dokuwiki::vhost,
+    $install_dir       = $dokuwiki::install_dir,
     $base_path         = $dokuwiki::base_path,
 ) {
 
@@ -21,12 +22,13 @@ class dokuwiki::install (
     if $use_webapp_config {
         webapp_config {
             "dokuwiki-${version}":
-                action  => 'install',
-                vhost   => $vhost,
-                base    => $base_path,
-                app     => 'dokuwiki',
-                version => $version,
-                depends => Package['www-apps/dokuwiki'];
+                action     => 'install',
+                vhost      => $vhost,
+                installdir => $install_dir,
+                base       => $base_path,
+                app        => 'dokuwiki',
+                version    => $version,
+                depends    => Package['www-apps/dokuwiki'];
         }
     }
 
