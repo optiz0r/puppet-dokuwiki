@@ -21,7 +21,7 @@ $conf['updatecheck'] = <%= @updatecheck ? 1 : 0 %>;
 # Authentication
 $conf['openregister']                     = 
 $conf['authtype']                         = '<%= @auth_type %>';
-<%- if @auth_type == 'ldap' -%>
+<%- if @auth_type == 'authldap' -%>
 $conf['auth']['ldap']['version']          = '<%= @ldap_version %>';
 $conf['auth']['ldap']['server']           = 'ldap://<%= @ldap_servers.join(" ") %>:389';
 $conf['auth']['ldap']['usertree']         = '<%= @ldap_user_tree %>';

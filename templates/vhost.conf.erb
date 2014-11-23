@@ -15,11 +15,11 @@
              Order Allow,Deny
              Allow from All
  
-<%- if @auth_type == 'ldap' -%>
+<%- if @auth_type == 'authldap' -%>
              AuthType Basic
              AuthName "LDAP Auth"
              AuthBasicProvider "ldap"
-             AuthLDAPUrl "ldap://<%= @ldap_servers.join(" ") %>:389/<%= @ldap_usertree %>?<%= @ldap_user_account_attr %>?<%= @ldap_user_scope %>"
+             AuthLDAPUrl "ldap://<%= @ldap_servers.join(" ") %>:389/<%= @ldap_user_tree %>?<%= @ldap_user_account_attr %>?<%= @ldap_user_scope %>"
              Require valid-user
 <%- end -%>
  

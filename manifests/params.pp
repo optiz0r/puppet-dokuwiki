@@ -38,7 +38,7 @@ class dokuwiki::params {
     $updatecheck            = false
     $content_license        = 'CC-BY-SA'
     $locktime               = 30*60
-    $auth_type              = 'ldap'
+    $auth_type              = 'authldap'
     $ldap_version           = 3
     $ldap_servers           = ['ldap']
     $ldap_user_tree         = 'ou=People,dc=local'
