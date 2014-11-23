@@ -1,7 +1,7 @@
 <VirtualHost *:80>
  
      ServerName <%= @vhost %>
-     DocumentRoot <%= @install_dir %>/<%= @base_path %>
+     DocumentRoot <%= @install_dir %>/htdocs
  
      # Permit larger file uploads
      php_value upload_max_filesize 20M
@@ -9,7 +9,7 @@
      # for the form metadata
      php_value post_max_size 24M
  
-     <Directory "<%= @install_dir %>/<%= @base_path %><%= @base_path_suffix %>">
+     <Directory "<%= @install_dir %>/htdocs<%= @base_path %>">
              AllowOverride None
              Options +FollowSymLinks
              Order Allow,Deny
@@ -24,7 +24,7 @@
 <%- end -%>
  
              RewriteEngine on
-             RewriteBase /<%= @base_path %><%= @base_path_suffix %>
+             RewriteBase /<%= @base_path %>
              RewriteRule ^_media/(.*)              lib/exe/fetch.php?media=$1  [QSA,L]
              RewriteRule ^_detail/(.*)             lib/exe/detail.php?media=$1  [QSA,L]
              RewriteRule ^_export/([^/]+)/(.*)     doku.php?do=export_$1&id=$2  [QSA,L]
@@ -36,17 +36,17 @@
      </Directory>
  
      # Explicitly deny access to all code and configuration directories
-     <Directory "<%= @install_dir %>/<%= @base_path %><%= @base_path_suffix %>/inc">
+     <Directory "<%= @install_dir %>/htdocs<%= @base_path %>/inc">
              Order Deny,Allow
              Deny from all
      </Directory>
  
-     <Directory "<%= @install_dir %>/<%= @base_path %><%= @base_path_suffix %>/inc/lang">
+     <Directory "<%= @install_dir %>/htdocs<%= @base_path %>/inc/lang">
              Order Deny,Allow
              Deny from all
      </Directory>
  
-     <Directory "<%= @install_dir %>/<%= @base_path %><%= @base_path_suffix %>/lib/_fla">
+     <Directory "<%= @install_dir %>/htdocs<%= @base_path %>/lib/_fla">
              ## no access to the fla directory
              Order allow,deny
              Deny from all

@@ -43,21 +43,15 @@ class dokuwiki::config (
     $superuser               = $dokuwiki::superuser,
 ) {
 
-    if $base_path == '' or $base_path =~ /\/$/ {
-        $base_path_suffix = ''
-    } else {
-        $base_path_suffix = '/'
-    }
-
     file {
-        "${install_dir}/${base_path}${base_path_suffix}conf/local.php":
+        "${install_dir}/htdocs/${base_path}conf/local.php":
             content => template($local_conf_template),
             owner   => 'root',
             group   => 'root',
             mode    => '0444',
             replace => false;
 
-        "${install_dir}/${base_path}${base_path_suffix}conf/local.protected.php":
+        "${install_dir}/htdocs/${base_path}conf/local.protected.php":
             content => template($protected_conf_template),
             owner   => 'root',
             group   => 'root',
