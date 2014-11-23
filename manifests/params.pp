@@ -56,6 +56,8 @@ class dokuwiki::params {
     $use_referrals          = true
     $ldap_mapping_name      = 'name'
     $ldap_mapping_groups    = []
+    $manager                = ''
+    $superuser              = ''
     
 }
 

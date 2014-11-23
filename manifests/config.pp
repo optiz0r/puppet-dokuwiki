@@ -39,6 +39,8 @@ class dokuwiki::config (
     $use_referrals           = $dokuwiki::use_referrals,
     $ldap_mapping_name       = $dokuwiki::ldap_mapping_name,
     $ldap_mapping_groups     = $dokuwiki::ldap_mapping_groups,
+    $manager                 = $dokuwiki::manager,
+    $superuser               = $dokuwiki::superuser,
 ) {
 
     if $base_path == '' or $base_path =~ /\/$/ {

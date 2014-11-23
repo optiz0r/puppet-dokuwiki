@@ -44,6 +44,8 @@ class dokuwiki (
     $use_referrals           = $dokuwiki::params::use_referrals,
     $ldap_mapping_name       = $dokuwiki::params::ldap_mapping_name,
     $ldap_mapping_groups     = $dokuwiki::params::ldap_mapping_groups,
+    $manager                 = $dokuwiki::params::manager,
+    $superuser               = $dokuwiki::params::superuser,
 ) inherits dokuwiki::params {
 
     # Allow a big-endian date format with optional letter suffix
