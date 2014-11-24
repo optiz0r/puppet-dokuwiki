@@ -15,7 +15,7 @@
              Order Allow,Deny
              Allow from All
  
-<%- if @auth_type == 'authldap' -%>
+<%- if @auth_type == 'authldap' && @use_sso -%>
              AuthType Basic
              AuthName "LDAP Auth"
              AuthBasicProvider "ldap"
