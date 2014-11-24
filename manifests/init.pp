@@ -19,7 +19,7 @@ class dokuwiki (
     $local_conf_template     = $dokuwiki::params::local_conf_template,
     $protected_conf_template = $dokuwiki::params::protected_conf_template,
     $wiki_title              = $dokuwiki::params::wiki_title,
-    $userewrite              = $dokuwiki::params::userewrite,
+    $use_rewrite             = $dokuwiki::params::use_rewrite,
     $use_acl                 = $dokuwiki::params::use_acl,
     $breadcrumbs             = $dokuwiki::params::breadcrumbs,
     $youarehere              = $dokuwiki::params::youarehere,

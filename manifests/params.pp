@@ -31,7 +31,7 @@ class dokuwiki::params {
 
     # Configuration directives
     $wiki_title             = 'dokuwiki'
-    $userewrite             = true
+    $use_rewrite            = true
     $use_acl                = true
     $breadcrumbs            = false
     $youarehere             = true
