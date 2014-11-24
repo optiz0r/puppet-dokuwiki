@@ -46,9 +46,9 @@ class dokuwiki::config (
     file {
         "${install_dir}/htdocs/${base_path}conf/local.php":
             content => template($local_conf_template),
-            owner   => 'root',
-            group   => 'root',
-            mode    => '0444',
+            owner   => $apache_user,
+            group   => $apache_group,
+            mode    => '0664',
             replace => false;
 
         "${install_dir}/htdocs/${base_path}conf/local.protected.php":
