@@ -41,7 +41,6 @@ $conf['auth']['ldap']['mapping']['grps']  = array();
 <%- @ldap_mapping_groups.each do |key, value| -%>
 $conf['auth']['ldap']['mapping']['grps']['<%= key %>'] = '<%= value %>';
 <%- end -%>
-$conf['auth']['ldap']['debug']            = 1;
 <%- end -%>
 
 $conf['manager']                          = '<%= @manager %>';
